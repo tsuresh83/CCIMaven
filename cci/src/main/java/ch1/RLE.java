@@ -1,4 +1,4 @@
-package cci;
+package ch1;
 import java.util.ArrayList;
 
 public class RLE {
