@@ -36,21 +36,22 @@ public class SingleLinkedList {
     int getData(){
         return this.data;
     }
-    SingleLinkedList delete(int data){
-        SingleLinkedList tmp = this;
+    SingleLinkedList delete(SingleLinkedList list,int data){
+        SingleLinkedList head = list;
         int ctr = 0;
-        if(tmp.getData()==data){
-            return tmp.getNext();
+        if(head != null && head.getData()==data){
+            return head.getNext();
         }
+        SingleLinkedList tmp = list;
         while(tmp.getNext()!= null &&
                 tmp.getNext().getData()!=data){
             tmp = tmp.getNext();            
         }
         if(tmp.getNext() !=null && tmp.getNext().getData()==data){
             tmp.setNext(tmp.getNext().getNext());
-            return tmp;
+            return head;
         }
-        return null;
+        return head;
     }
     @Override
     public String toString(){
@@ -64,9 +65,9 @@ public class SingleLinkedList {
         }
         list.printList();
         list.add(5);
-        System.out.println(list.delete(0));
+        list = (list.delete(list,0));
         list.printList();
-        System.out.println(list.delete(1));
+        list = (list.delete(list,1));
         list.printList();
     }
     void printList(){
