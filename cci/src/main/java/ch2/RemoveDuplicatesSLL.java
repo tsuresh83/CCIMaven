@@ -21,6 +21,10 @@ public class RemoveDuplicatesSLL {
             list.add(i);
         }
         //list.printList();
+        list = removeDuplicatesWithoutBuffer(list);
+        list.printList();
+    }
+    static SingleLinkedList removeDuplicatesWithBuffer(SingleLinkedList list){
         HashSet<Integer> entries = new HashSet<Integer>();
         SingleLinkedList current = list;
         SingleLinkedList previous = null;
@@ -33,7 +37,26 @@ public class RemoveDuplicatesSLL {
             }    
             current = current.getNext();
         }
-        list.printList();
+        return list;
+    }
+    static SingleLinkedList removeDuplicatesWithoutBuffer(SingleLinkedList list){
+        SingleLinkedList current = list;
+        SingleLinkedList runner = null;
+        SingleLinkedList runnerPrevious = null;
+        while(current != null){
+            runnerPrevious = current;
+            runner = current.getNext();
+            while(runner !=null){
+                if(runner.getData() == current.getData()){
+                    runnerPrevious.setNext(runner.getNext());
+                }else{
+                    runnerPrevious = runner;
+                }
+                runner = runner.getNext();
+            }
+            current = current.getNext();
+        }
+        return list;
     }
     private static HashMap<Integer,Integer> getCounts(SingleLinkedList list){
         HashMap<Integer,Integer> counts = new HashMap<Integer,Integer>();
