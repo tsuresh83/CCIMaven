@@ -15,6 +15,9 @@ public class SingleLinkedList {
     SingleLinkedList(int data){
         this.data = data;
     }
+    SingleLinkedList(){
+        
+    }
     SingleLinkedList getNode(){
         return this;
     }
